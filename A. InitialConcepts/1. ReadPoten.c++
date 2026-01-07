@@ -1,12 +1,18 @@
-// Parameters
-const int sensorPin = A5; // Pin connected to sensor
+// ========== COMPONENTS ==========
+// - Arduino UNO
+// - B10K potentiometer
+// ================================
 
-//Variables
-int sensorVal; // Analog value from the sensor
-long percentage;
+// Parameters
+const int sensorPin = A5; // Pin connected to the potentiometer
+
+// Variables
+int sensorVal;      // Analog value read from the potentiometer
+long percentage;    // Value converted to percentage
 
 void setup() {
   Serial.begin(9600);
+  pinMode(sensorPin, OUTPUT);
 }
 
 void loop() {
@@ -14,11 +20,11 @@ void loop() {
   delay(300);
   
   sensorVal = analogRead(sensorPin);
-  Serial.print("Medição: ");
+  Serial.print("Measurement: ");
   Serial.println(sensorVal);
 
   percentage = map(sensorVal, 0, 1023, 0, 100);
-  Serial.print("Porcentagem: ");
+  Serial.print("Percentage: ");
   Serial.println(percentage);
   Serial.println("");
 }
