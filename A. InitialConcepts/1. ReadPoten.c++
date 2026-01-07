@@ -1,24 +1,29 @@
-// ========== COMPONENTS ==========
+// Project to measure analog value and percentage using a potentiometer.
+
+// ========= COMPONENTS =========
 // - Arduino UNO
-// - B10K potentiometer
-// ================================
+// - B10K Potentiometer
 
-// Parameters
-const int sensorPin = A5; // Pin connected to the potentiometer
+// ========= POTENTIOMETER CONNECTIONS =========
+// - Pin 1       -> Arduino 5V
+// - Middle Pin  -> Analog Pin A5
+// - Pin 3       -> GND
 
-// Variables
+// ========= PARAMETERS =========
+const int sensorPin = A5; // Pin connected to the potentiometer (Middle Pin)
+
+// ========= VARIABLES =========
 int sensorVal;      // Analog value read from the potentiometer
 long percentage;    // Value converted to percentage
 
 void setup() {
   Serial.begin(9600);
-  pinMode(sensorPin, OUTPUT);
 }
 
 void loop() {
 
   delay(300);
-  
+
   sensorVal = analogRead(sensorPin);
   Serial.print("Measurement: ");
   Serial.println(sensorVal);
